@@ -1,0 +1,24 @@
+<h4 class=" mb-2 mt-5 mt-lg-0 p-2">Lorem</h4>
+<div class="calendar ">
+  <p-calendar [(ngModel)]="selectedDate" [inline]="true" [readonlyInput]="true" [minDate]="minDateValue"
+    [maxDate]="maxDateValue" [disabledDates]="(interviwerPage)?invalidDates: null" hourFormat="12" required="true"
+    (onSelect)="selectDate($event)">
+
+    <p-footer class="w-100 d-flex flex-column justify-content-center align-items-center">
+      <div  *ngIf="currentEvent && !interviwerPage">You have an interview at
+        {{currentEvent['day'] | date:'fullDate'}} with <a
+          [routerLink]="['/user-profile', currentEvent.interviwerID]">{{currentEvent['interviwerName']}}</a>
+      </div>
+      <div  *ngIf="validTime && interviwerPage">
+        <p class="m-1" *ngFor="let hours of validTime.hours">
+          <p-radioButton  name="validHours" [value]="hours" [label]="hours" [(ngModel)]="selectedHour">
+          </p-radioButton>
+        </p>
+      </div>
+      <button *ngIf="interviwerPage" class="book-btn" (click)="bookInterview()" disabled>Save</button>
+    </p-footer>
+    <ng-template pTemplate="date" let-date *ngIf="!interviwerPage">
+      <span [ngStyle]="{color: (checkeventDate(date)) ? '#FFBA61' : 'inherit'}">{{date.day}}</span>
+    </ng-template>
+  </p-calendar>
+</div>

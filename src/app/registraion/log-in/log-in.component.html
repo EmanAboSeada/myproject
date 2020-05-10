@@ -1,0 +1,28 @@
+<section class="pt-3 mx-auto">
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <div class="alert alert-danger mb-2 py-1" *ngIf="requestError">
+        <p>{{requestError}}</p>
+    </div>
+    <form action="" [formGroup]="loginForm" (submit)="onSubmit()" class=" mx-auto p-3" *ngIf="!isLoading">
+        <div class="ui-float-label row mt-4 mb-5 mx-3">
+            <input formControlName="email" id="float-input2" type="text" pInputText class="w-100"
+                aria-describedby="emailRequiredHelpBlock">
+            <label for="float-input2" class="">Email</label>
+            <fa-icon [icon]="icons['email']"></fa-icon>
+            <small id="emailRequiredHelpBlock" class=" text-danger" *ngIf="loginForm.get('email').hasError('required') && 
+            loginForm.get('email').touched">*Required</small>
+        </div>
+        <div class="ui-float-label row mt-4 mb-5 mx-3">
+            <input formControlName="password" id="float-input3" type="password" pInputText class="w-100"
+                aria-describedby="passwordHelpBlock">
+            <label for="float-input3" class="px-1">Password</label>
+            <fa-icon [icon]="icons['password']"></fa-icon>
+            <small class=" text-danger" *ngIf="loginForm.get('password').hasError('required') && 
+                loginForm.get('password').touched">*Required</small>
+        </div>
+        <div class="row my-5 justify-content-center">
+            <button type="submit" class=" w-50 mt-4 login-btn">Log In</button>
+        </div>
+    </form>
+
+</section>

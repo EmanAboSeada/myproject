@@ -1,0 +1,95 @@
+<section class=" profile row  mx-auto">
+    <section class=" profile-wrapper col-12 col-lg-8">
+        <section class="p-4 intro">
+            <div class="row align-items-center">
+                <figure class=" user-image">
+                        <img [src]="user.image" alt="" *ngIf="user.image">
+                        <img src="https://i.postimg.cc/kGrrctNV/default-user.jpg" alt="" *ngIf="!user.image">
+                    </figure>
+                <div class="pl-3 col">
+                    <div class="row align-items-center ">
+                        <h5 class=" username">{{user.name}}</h5>
+                        <img class="verified-img" src="https://i.postimg.cc/k4R3KyS3/verified2.png" *ngIf="user.verified">
+                        <img class="verified-img" src="https://i.postimg.cc/htKB6xkT/verified1.png" *ngIf="!user.verified">
+                    </div>
+                    <p-rating class="row" [ngModel]="user.rate" disabled="true" [cancel]="false" readonly="true">
+                    </p-rating>
+                    <p class="row">{{user.companyNmae}}</p>
+                </div>
+
+            </div>
+            <h6 class="row mt-5">{{user.jobTitle}}</h6>
+            <p class="row my-2 bio">{{user.bio}}</p>
+            <div class="row mt-4 pt-4 footer justify-content-between">
+                <div class="col d-flex">
+                    <p class="mr-md-5 mr-3">5</p>
+                    <p>lorem</p>
+                </div>
+                <div class="ml-lg-auto d-flex">
+                    <a href="#">
+                        <fa-icon [icon]="icons.facebook"></fa-icon>
+                    </a>
+                    <a href="#">
+                        <fa-icon [icon]="icons.linkedIn"></fa-icon>
+                    </a>
+                    <a href="#">
+                        <fa-icon [icon]="icons.github"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="career-history mt-4 ">
+            <div class="career-history-header py-2 p-4 row justify-content-between align-items-center">
+                <h5>Career History</h5>
+            </div>
+            <div class="career-history-content p-4">
+                <div class="career-history-content-item py-3">
+                    <div class="row">
+                        <h6>Job tilte - Company Name</h6>
+                    </div>
+                    <small>June 2018 : september 2019</small>
+        
+                </div>
+                <div class="career-history-content-item py-3">
+                    <div class="row">
+                        <h6>Job tilte - Company Name</h6>
+                    </div>
+                    <small>June 2018 : september 2019</small>
+        
+                </div>
+            </div>
+        
+        </section>
+        <section class="reviews mt-4 ">
+            <div class="reviews-header py-2 p-4 row justify-content-between align-items-center">
+                <h5>Reviews</h5>
+            </div>
+            <div class="reviews-content p-4">
+                <div class="reviews-content-item py-3">
+                        <h6>Khalid Kandil</h6>
+                        <p-rating class="row" [ngModel]="4" disabled="true" [cancel]="false" readonly="true">
+                        </p-rating>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus perferendis praesentium consectetur earum quasi.</p>
+                </div>
+                <div class="reviews-content-item py-3">
+                    <h6>Eman Abo Seada</h6>
+                    <p-rating class="row" [ngModel]="5" disabled="true" [cancel]="false" readonly="true">
+                    </p-rating>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus perferendis praesentium consectetur earum quasi.</p>
+            </div>
+            </div>
+        
+        </section>
+    </section>
+    <section class="calendar d-none d-lg-block col-4">
+        <app-calendar></app-calendar>
+    </section>
+</section>
+<!-- responsive schedule -->
+<section class=" responsive-sidebar  d-block d-lg-none col-4">
+    <p-sidebar [(visible)]="displaySideBar" position="right" dismissableMask="true" [style]="{width:'25em', overflow:'auto'}">
+        <app-calendar ></app-calendar>
+    </p-sidebar>
+    <button class="schedule-btn"  type="text" pButton label="" 
+    (click)="displaySideBar = true" pButton></button>
+</section>

@@ -1,0 +1,147 @@
+$firstColor: #00287a;
+$secondColor: #ffffff;
+$thirdColor: #ffbf55;
+$fourthColor: #99d6ff;
+$containerWidth: 80%;
+$normalShadow: 0px 2px 8px 0px #b0c5f1;
+$lightRadius: 5px;
+$grayColor: #f7f7f7;
+
+:root {
+  font-size: 16px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+}
+img {
+  width: 100%;
+}
+button:focus{
+  outline: none;
+}
+body {
+  background-color: $grayColor;
+  app-root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .ui-calendar{
+    width: 100%;
+    .ui-datepicker {
+      color: $firstColor;
+      border: none;
+      .ui-datepicker-header {
+        color: $firstColor;
+      }
+      table {
+        font-size: 1vw;
+        td > a.ui-state-active,
+        td > span.ui-state-active {
+          background-color: $fourthColor  ;
+        }
+        td a {
+          color: $firstColor;
+        }
+        td.ui-datepicker-today > a.ui-state-active,
+        td.ui-datepicker-today > span.ui-state-active {
+          background-color: #d0d0d0;
+        }
+      }
+      .ui-timepicker a,
+      .ui-datepicker-header .ui-datepicker-next,
+      .ui-datepicker-header .ui-datepicker-prev {
+        color: $fourthColor;
+        &:hover {
+          color: $firstColor ;
+        }
+      }
+    }
+  }
+  .ui-rating {
+    &.ui-state-disabled {
+      opacity: 1;
+    }
+    a {
+      color: $fourthColor;
+    }
+  }
+  .ui-overlaypanel .ui-overlaypanel-close {
+    background-color: $fourthColor;
+  }
+  //prfile component.....
+  .editIntroModal {
+    max-width: 450px;
+  }
+  .addCareerModal,
+  .editImageModal {
+    width: 450px;
+  }
+  .editIntroModal,
+  .addCareerModal,
+  .editImageModal {
+    &.ui-dialog .ui-dialog-titlebar {
+      color: $firstColor;
+
+      .ui-dialog-titlebar-icon {
+        color: $firstColor;
+      }
+    }
+  }
+  .ui-dropdown {
+    min-width: 100%;
+  }
+  .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight {
+    background-color: $firstColor;
+  }
+  .eventsDate{
+    color: white;
+    background-color: $firstColor;
+}
+.interviewer-paginator{
+  border:none;
+  border-top: 1px solid #2222;
+  border-radius: 0 0 $lightRadius $lightRadius;
+  .ui-paginator-pages .ui-paginator-page.ui-state-active{
+    background-color: $fourthColor;
+  }
+}
+
+.ui-radiobutton .ui-radiobutton-box{
+&.ui-state-active {
+  border-color: $fourthColor;
+  background-color: $fourthColor;
+}
+&.ui-state-focus{
+  box-shadow: none;
+}
+}
+
+}
+@media only screen and (max-width: 414px) {
+  :root {
+    font-size: 15px;
+  }
+  body {
+    .editIntroModal,
+    .addCareerModal,
+    .editImageModal {
+      width: 100%;
+    }
+    .ui-calendar{
+      .ui-datepicker{
+        table{
+          font-size: 2.5vw;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  :root {
+    font-size: 12px;
+  }
+}

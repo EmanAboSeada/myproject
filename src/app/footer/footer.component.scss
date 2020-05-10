@@ -1,0 +1,66 @@
+@import './../../styles.scss';
+
+footer {
+    background-color: $firstColor;
+    .footer-wrapper {
+      width: $containerWidth;
+      section {
+        display: flex;
+        flex-direction: column;
+        margin: 0.5em;
+        a {
+          color: $secondColor;
+          text-decoration: none;
+          opacity: 0.8;
+        }
+        a:nth-last-of-type(odd) {
+          margin-top: 1em;
+        }
+        a:hover {
+          text-decoration: underline;
+          opacity: 1;
+        }
+        form {
+          position: relative;
+          input {
+            padding: 0.5em 6.5em 0.5em 0.6em;
+            border: none;
+            font-size: 1rem;
+            border-radius: 10px 10px 10px 0;
+            color: $firstColor;
+          }
+          button {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            padding: 0.5em 0.7em;
+            background-color: $fourthColor;
+            color: $firstColor;
+            border: none;
+            font-size: 1rem;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .socialMedia {
+      a {
+        font-size: 1.5rem;
+        color: $secondColor;
+        margin-top: 1em;
+        text-decoration: none;
+        opacity: 0.8;
+        margin: 1em 0.5em;
+      }
+      a:hover {
+        opacity: 1;
+      }
+    }
+    p {
+      color: white;
+      opacity: 0.8;
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+  }

@@ -1,0 +1,64 @@
+<section class="pt-3 mx-auto">
+    <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+    <div class="alert alert-danger mb-2 py-1" *ngIf="requestError">
+        <p>{{requestError}}</p>
+    </div>
+    <form action="" [formGroup]="signupForm" (submit)="onSubmit()" class=" mx-auto p-3" *ngIf="!isLoading">
+        <!-- <div class="ui-float-label row mt-4 mb-5 mx-3">
+            <input formControlName="username" id="float-input1" type="text" pInputText class="w-100"
+                aria-describedby="userNameHelpBlock">
+            <label for="float-input1" class="">User Name</label>
+            <fa-icon [icon]="icons['username']"></fa-icon>
+            <small id="userNameHelpBlock" class=" text-danger"
+                *ngIf="signupForm.get('username').hasError('required') && 
+                signupForm.get('username').touched">*Required</small>
+        </div> -->
+
+        <div class="ui-float-label row mt-4 mb-5 mx-3">
+            <input formControlName="email" id="float-input2" type="text" pInputText class="w-100"
+                aria-describedby="emailRequiredHelpBlock">
+            <label for="float-input2" class="">Email</label>
+            <fa-icon [icon]="icons['email']"></fa-icon>
+            <small id="emailRequiredHelpBlock" class=" text-danger" 
+            *ngIf="signupForm.get('email').hasError('required') && 
+            signupForm.get('email').touched">*Required</small>
+            <small class=" text-danger" 
+            *ngIf="signupForm.get('email').hasError('email') && 
+            signupForm.get('email').touched"
+            >*Please, enter a valid email</small>
+        </div>
+
+        <div formGroupName = "passwordGroup">
+            <div class="ui-float-label row mt-4 mb-5 mx-3">
+                <input formControlName="password" id="float-input3" type="password" pInputText class="w-100"
+                    aria-describedby="passwordHelpBlock">
+                <label for="float-input3" class="px-1">Password</label>
+                <fa-icon [icon]="icons['password']"></fa-icon>
+                <small class=" text-danger" *ngIf="signupForm.get('passwordGroup.password').hasError('required') && 
+                signupForm.get('passwordGroup.password').touched">*Required</small>
+                <small id="passwordHelpBlock" class=" text-danger" *ngIf="signupForm.get('passwordGroup.password').hasError('pattern') && 
+                signupForm.get('passwordGroup.password').touched">
+                    *minimum length:8, contain (a capital and small letter,
+                    a number and a special character)</small>
+            </div>
+    
+            <div class="ui-float-label row mt-4 mb-5 mx-3">
+                <input formControlName="confirmPassword" id="float-input4" type="password" pInputText class="w-100"
+                    aria-describedby="confirmPasswordHelpBlock">
+                <label for="float-input4" class="px-1">Confirm Password</label>
+                <fa-icon [icon]="icons['password']"></fa-icon>
+                <small class=" text-danger" *ngIf="signupForm.get('passwordGroup.confirmPassword').hasError('required') && 
+                signupForm.get('passwordGroup.confirmPassword').touched">*Required</small>
+                <small id="confirmPasswordHelpBlock" class=" text-danger" 
+                *ngIf="signupForm.get('passwordGroup').hasError('notSame') && 
+                signupForm.get('passwordGroup.confirmPassword').touched && 
+                !signupForm.get('passwordGroup.confirmPassword').hasError('required')">*Password don't match</small>
+            </div>
+        </div>
+
+        <div class="row my-5 justify-content-center">
+            <button type="submit" class=" w-50 mt-4 signup-btn">Sign Up</button>
+        </div>
+    </form>
+
+</section>

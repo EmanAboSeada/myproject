@@ -1,0 +1,88 @@
+<section class="career-history mt-4 ">
+    <div class="career-history-header py-2 p-4 row justify-content-between align-items-center">
+        <h5>Career History</h5>
+        <button type="button" (click)="displayAddCareerDialog()" class="plus-icon">
+            <fa-icon [icon]="icons.plus"></fa-icon>
+        </button>
+        <p-dialog styleClass="addCareerModal" modal="true" dismissableMask="true" header="Add Career"
+            [(visible)]="displayAddCareerForm" [transitionOptions]="'.2s'">
+            <form action="" [formGroup]="addCareerForm" class="addCareerForm">
+                <div class="form-group my-2">
+                    <label for="company" class="">Company</label>
+                    <input formControlName="company" id="company" type="text" class="form-control">
+                </div>
+                <div class="form-group my-2">
+                    <label for="title" class="">Job Title</label>
+                    <input formControlName="title" id="title" type="text" class="form-control">
+                </div>
+
+                <div class="start-period mt-3 " >
+                    <label class="">Start At</label>
+                    <div class="row my-2 ">
+                        <div class="col-6 pr-1">
+                            <p-dropdown formControlName="startMonth" [options]="MonthsOptions" [(ngModel)]="startMonth" optionLabel="month" placeholder="Select a Month"></p-dropdown>
+                            <small class=" text-danger" *ngIf="addCareerForm.get('startMonth').hasError('required') && 
+                            addCareerForm.get('startMonth').touched">*Required</small>
+                        </div>
+                        <div class="col-6 pl-1">
+                            <p-dropdown formControlName="startYear" [options]="YearsOptions" [(ngModel)]="startYear" optionLabel="year" placeholder="Select a Year"></p-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="end-period" *ngIf ="!stillWorkChecked">
+                    <p class="mb-1 mt-3 ">End At</p>
+                    <div class="row my-2 ">
+                        <div class="col-6 pr-1 ">
+                            <p-dropdown formControlName="endMonth" [options]="MonthsOptions" [(ngModel)]="endMonth" optionLabel="month" placeholder="Select a Month"></p-dropdown>
+                        </div>
+                        <div class="col-6 pl-1 ">
+                            <p-dropdown formControlName="endYear" [options]="YearsOptions" [(ngModel)]="endYear" optionLabel="year" placeholder="Select a Year"></p-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 py-2 stillWork">
+                    <p-checkbox formControlName="stillWork" [(ngModel)]="stillWorkChecked" binary="true" id="stillWork" class="mr-2"></p-checkbox>
+                <label for="stillWork">Still work here</label>
+                </div>
+                <div class="form-group my-2">
+                    <label for="description">description</label>
+                    <textarea  class="form-control" id="description"
+                        rows="5"></textarea>
+                </div>
+                <div class="row addCareerForm-submit">
+                    <input type="submit" class="ml-auto mt-1" >
+                </div>
+            </form>
+        </p-dialog>
+    </div>
+    <div class="career-history-content p-4">
+        <div class="career-history-content-item py-3">
+            <div class="row">
+                <h6>Job tilte - Company Name</h6>
+                <button class="ml-auto">
+                    <fa-icon [icon]="icons.edit"></fa-icon>
+                </button>
+                <button class="ml-1">
+                    <fa-icon [icon]="icons.delete"></fa-icon>
+                </button>
+            </div>
+            <small>June 2018 : september 2019</small>
+
+        </div>
+        <div class="career-history-content-item py-3">
+            <div class="row">
+                <h6>Job tilte - Company Name</h6>
+                <button class="ml-auto">
+                    <fa-icon [icon]="icons.edit"></fa-icon>
+                </button>
+                <button class="ml-1">
+                    <fa-icon [icon]="icons.delete"></fa-icon>
+                </button>
+            </div>
+            <small>June 2018 : september 2019</small>
+
+        </div>
+    </div>
+
+</section>

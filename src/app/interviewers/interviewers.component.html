@@ -1,0 +1,14 @@
+<div class="interviewers pt-3  d-flex  flex-column justify-content-between">
+    <div class="filter align-self-center">
+        <div class="filter-container">
+            <fa-icon [icon]="searchIcon"></fa-icon>
+            <input type="text" placeholder="Search Interviwers" [(ngModel)]="searchText" (keyup)="changeSearchText()">
+        </div>
+    </div>
+    <div class="line"></div>
+    <app-interviewer-details *ngFor="let user of filteredUserList |slice: startIndex: endIndex" [user]="user" >
+    </app-interviewer-details>
+    <div class="no-data  m-auto d-flex align-items-center" *ngIf="filteredUserList.length == 0">
+        <h3>There is no interviewers!</h3></div>
+    <p-paginator [rows]="rows" [totalRecords]="usersNumber" (onPageChange)="paginate($event)"  styleClass="interviewer-paginator"></p-paginator>
+</div>

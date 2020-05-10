@@ -1,0 +1,37 @@
+@import "../../styles.scss";
+
+h4 {
+  text-align: center;
+  color: $firstColor;
+  background-color: $secondColor;
+  box-shadow: $normalShadow;
+  border-radius: $lightRadius;
+}
+
+.calendar{
+    box-shadow: $normalShadow;
+    font-size: 16px;
+    border-radius: $lightRadius;
+    p-footer{
+      border-top: 1px solid #2222;
+      padding-top: 1rem;
+        a{
+          color: $fourthColor;
+        }
+      .book-btn{
+        background-color: $firstColor;
+        border: none;
+        border-radius: $lightRadius;
+        color: $secondColor;
+        padding: .3em 3em;
+        margin-top: 1rem;
+        font-weight: 500;
+        font-size: 1.1rem;
+        &[disabled]{
+          opacity: .5;
+        }
+      }
+    }
+}
+
+

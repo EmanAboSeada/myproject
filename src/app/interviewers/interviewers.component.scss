@@ -1,0 +1,55 @@
+@import "../../styles.scss";
+
+.interviewers {
+  width: $containerWidth;
+  margin: 0 auto;
+  box-shadow: $normalShadow;
+  background-color: white;
+  border-radius: $lightRadius;
+  min-height: 70vh;
+  .filter {
+    position: sticky;
+    top: 0px;
+    width: calc(35vw + 4rem);
+    z-index: 1001;
+    .filter-container {
+      position: relative;
+      width: 100%;
+      input {
+        width: 100%;
+        padding: 0.35rem 0.9rem 0.35rem 2rem;
+        border-radius: 20px;
+        border: 2px solid $grayColor;
+        &:focus {
+          outline: none;
+          border-color: $fourthColor;
+        }
+      }
+      fa-icon {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        font-size: 1.3rem;
+        color: $fourthColor;
+      }
+    }
+  }
+  .line {
+    margin: 1rem 0;
+    height: 0.1px;
+    border-top: 1px solid #2222;
+    box-shadow: $normalShadow;
+  }
+  .no-data{
+    height: 50vh;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .interviewers {
+    width: 100%;
+    .filter {
+      position: relative;
+    }
+  }
+}

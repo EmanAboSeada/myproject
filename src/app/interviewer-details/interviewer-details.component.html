@@ -1,0 +1,27 @@
+<section class=" profile-section d-flex align-items-center py-4">
+    <div class=" d-flex flex-column align-content-center mr-2">
+        <figure class=" user-image">
+            <img [src]="user.image" alt="" *ngIf="user.image">
+            <img src="https://i.postimg.cc/kGrrctNV/default-user.jpg" alt="" *ngIf="!user.image">
+
+        </figure>
+        <a [routerLink]="['/user-profile', user.id]">Show More</a>
+    </div>
+    <div class="row">
+        <div class="pl-3 col">
+            <div class="row align-items-center ">
+                <h5 class=" username">{{user.name}}</h5>
+                <figure class="verified-img">
+                    <img  src="https://i.postimg.cc/k4R3KyS3/verified2.png" *ngIf="user.verified">
+                    <img  src="https://i.postimg.cc/htKB6xkT/verified1.png" *ngIf="!user.verified">
+                </figure>
+                <!-- <p class="ml-auto">{{user.rate}}</p> -->
+            </div>
+            <p-rating class="row" [ngModel]="user.rate" disabled="true" [cancel]="false" readonly="true">
+            </p-rating>
+            <p >{{user.companyNmae}}</p>
+            <h6 class="pt-2">Frontend Developer</h6>
+            <p class="my-2 bio">{{user.bio}}</p>
+        </div>
+    </div>
+</section>

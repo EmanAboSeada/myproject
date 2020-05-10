@@ -1,0 +1,49 @@
+@import "../../styles.scss";
+
+.profile-section {
+  width: $containerWidth;
+  margin: 0 auto;
+  border-bottom: 1px solid #2222;
+  .username {
+    color: $firstColor;
+  }
+  .user-image {
+    width: calc(3vw + 5rem);
+    height: calc(3vw + 5rem);
+    border-radius: 50%;
+    background-color: $grayColor;
+    box-shadow: $normalShadow;
+    img {
+      border-radius: 50%;
+    }
+  }
+  .verified-img {
+    width: calc(1vw + 1rem);
+  }
+  a {
+    padding: 0.3em 0;
+    color: $firstColor;
+    box-shadow: $normalShadow;
+    text-align: center;
+    background-color: $secondColor;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: $lightRadius;
+    margin-top: 1em;
+    &:hover {
+      text-decoration: none;
+      color: $fourthColor;
+    }
+  }
+  h6 {
+    border-top: 1px solid #2222;
+  }
+  .bio {
+    opacity: 0.8;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

@@ -1,0 +1,108 @@
+<header class="container-fluid position-fixed">
+    <div class="header-wrapper mx-auto">
+        <nav class="d-flex flex-row py-1 align-items-center justify-content-between">
+            <a routerLink="/home" class="logo d-flex align-items-baseline font-weight-bold">
+                <p>Lo</p>
+                <p>Go</p>
+            </a>
+            <button class="menuBtn align-self-center d-block d-lg-none" (click)="togglebtn()">
+                <span class="lines"></span>
+            </button>
+            <div class="d-none d-lg-flex align-items-center" *ngIf="isAuthenticated">
+                <div class="position-relative">
+                    <button class="notifications-btn" (click)="showNotifications()">
+                        <fa-icon [icon]="notificationIcon"></fa-icon><span>10</span>
+                    </button>
+                    <div class="nav-dropdown notifications-dropdown" tabindex="0" (mousedown)="eventPreventDefault($event)"
+                        (blur)="hideNotifications()">
+                        <div class="notifications-dropdown-wrapper">
+                            <p class="p-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae reiciendis unde harum.</p>
+                            <p class="p-4">A dignissimos dolorum id soluta quaerat suscipit distinctio minus dolorem similique modi</p>
+                            <p class="p-4">ed sunt adipisci, facilis, laborum iusto velit. A, sed tempore!</p>
+                            <p class="p-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae reiciendis unde harum.</p>
+                            <p class="p-4">A dignissimos dolorum id soluta quaerat suscipit distinctio minus dolorem similique modi</p>
+                            <p class="p-4">ed sunt adipisci, facilis, laborum iusto velit. A, sed tempore!</p>
+                       
+                        </div>
+                    </div>
+                </div>
+                <button [routerLink]="['/chat',1]" class="mx-5 chat-btn" routerLinkActive="active">
+                    <fa-icon [icon]="messageIcon"></fa-icon><span>9</span>
+                </button>
+                <div class="position-relative">
+                    <figure class="user-img" (click)="showUserDropdown()"><img src="https://i.postimg.cc/kGrrctNV/default-user.jpg"
+                            alt="">
+                    </figure>
+                    <div class="nav-dropdown profile-dropdown p-2" tabindex="0" (mousedown)="eventPreventDefault($event)"
+                        (blur)="hideUserDropdown()">
+                        <a [routerLink]="['/profile', 2]" routerLinkActive="" class="profile d-flex py-2 px-3 w-100"
+                            (mouseup)="hideUserDropdown()">
+                            <figure class=" mr-3"><img src="https://i.postimg.cc/kGrrctNV/default-user.jpg" alt=""></figure>
+                            <div>
+                                <p>Eman Abo Seada</p>
+                                <small>View Profile</small>
+                            </div>
+                        </a>
+                        <button class="logout-btn py-2 px-3 w-100" (click)="onLogout()">
+                            <fa-icon [icon]="logoutIcon" class="mr-4 ml-1"></fa-icon> Log Out
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="registration d-none d-lg-block" *ngIf="!isAuthenticated">
+                <a routerLink="/registration/login" class="logIn-btn">Log In</a>
+                <a routerLink="/registration/signup" class="signUp-btn">Sign Up</a>
+            </div>
+        </nav>
+    </div>
+    <div class="responsive-nav d-flex align-items-center justify-content-center">
+        <div class="responsive-nav-wrapper position-relative w-100 h-100 d-flex  align-items-center justify-content-center overflow-auto">
+            <ul class="flex-column">
+                <li>
+                    <a routerLink="/home" class="logo d-flex align-items-baseline justify-content-center "
+                    (mouseup)="togglebtn()">
+                        <p>Lo</p>
+                        <p>Go</p>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated">
+                    <a [routerLink]="['/profile',1]"  (mouseup)="togglebtn()" routerLinkActive="active">Profile</a>
+                </li>
+                <li *ngIf="isAuthenticated">
+                    <a routerLink="/chat"  (mouseup)="togglebtn()"  routerLinkActive="active">
+                        Messages<span class="text-warning ml-2">1</span>
+                    </a>
+                </li>
+                <li *ngIf="isAuthenticated">
+                    <button  class="notifications-btn" (click)="showNotificationsInResponsive()">
+                        Notifications<span class="text-warning ml-2">10</span>
+                    </button>
+                </li>
+                <li *ngIf="!isAuthenticated">
+                    <a routerLink="/registration/login" class="logIn-btn"  (mouseup)="togglebtn()" routerLinkActive="active">Log In</a>
+                </li>
+                <li *ngIf="!isAuthenticated">
+                    <a routerLink="/registration/signup" class="signUp-btn"  (mouseup)="togglebtn()" routerLinkActive="active">Sign Up</a>
+                </li>
+                <li *ngIf="isAuthenticated">
+                    <button class="logout-btn py-2 px-3 w-100" (click)="onLogout()" (mouseup)="togglebtn()">
+                        <fa-icon [icon]="logoutIcon" class="mr-4 ml-1"></fa-icon> Log Out
+                    </button>
+                </li>
+            </ul>
+            <div class="notifications-respnsive-container w-100">
+                <h5 class="mx-5 py-4  text-center">Notifications</h5>
+                <p class="mx-5 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae reiciendis unde harum.</p>
+                <p class="mx-5 py-4">A dignissimos dolorum id soluta quaerat suscipit distinctio minus dolorem similique modi ed sunt adipisci, facilis, laborum iusto velit. A, sed tempore</p>
+                <p class="mx-5 py-4">ed sunt adipisci, facilis, laborum iusto velit. A, sed tempore!</p>
+                <p class="mx-5 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae reiciendis unde harum.</p>
+                <p class="mx-5 py-4">A dignissimos dolorum id soluta quaerat suscipit distinctio minus dolorem similique modi</p>
+                <p class="mx-5 py-4">ed sunt adipisci, facilis, laborum iusto velit. A, sed tempore!</p>
+                <p class="mx-5 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae reiciendis unde harum.</p>
+                <p class="mx-5 py-4">A dignissimos dolorum id soluta quaerat suscipit distinctio minus dolorem similique modi</p>
+                <p class="mx-5 py-4">ed sunt adipisci, facilis, laborum iusto velit. A, sed tempore!</p>
+            
+            </div>
+        </div>
+    </div>
+</header>

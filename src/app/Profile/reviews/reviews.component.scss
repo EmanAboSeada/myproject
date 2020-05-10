@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+.reviews {
+  background-color: $secondColor;
+  box-shadow: $normalShadow;
+  border-radius: $lightRadius;
+  border-left: 7px solid $fourthColor;
+  .reviews-header {
+    background-color: $grayColor;
+    border-bottom: 1px solid #2222;
+    color: $firstColor;
+  }
+  .reviews-content {
+    .reviews-content-item {
+      border-bottom: 1px solid #2222;
+      p{
+          opacity: .8;
+      }
+    }
+    .reviews-content-item:last-of-type {
+      border: none;
+    }
+  }
+}
+

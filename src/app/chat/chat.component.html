@@ -1,0 +1,8 @@
+<section class="chat mx-auto">
+    <div class="chat-wrapper row w-100 h-100">
+        <app-chat-list class="col-lg-4 col-md-5 h-100 col-12" *ngIf="chatRoute || chatListAndContentRoute"></app-chat-list>
+        <section class="chat-content col-lg-8 col-md-7 h-100 col-12 " *ngIf="!chatRoute || chatListAndContentRoute">
+            <router-outlet class="h-100" ></router-outlet> 
+        </section>
+    </div>
+</section>

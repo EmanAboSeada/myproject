@@ -1,0 +1,154 @@
+@import "../../../styles.scss";
+
+@media only screen and (max-width: 414px) {
+  .profile {
+    width: 100%;
+    .user-image {
+        width: 5.5em;
+        height: 5.5em;
+        border-radius: 50%;
+    }
+    .verified-img {
+      width: 1.5em;
+    }
+  }
+}
+@media only screen and (min-width: 415px) {
+  .profile {
+    width: $containerWidth;
+    margin-top: 2em;
+    .user-image {
+        width: 6.5em;
+        height: 6.5em;
+        border-radius: 50%;
+    }
+    .verified-img {
+      width: 1.8em;
+    }
+  }
+}
+.profile {
+  .profile-wrapper {
+      // max-width: 750px;
+    .intro {
+      background-color: $secondColor;
+      box-shadow: $normalShadow;
+      border-radius: $lightRadius;
+      border-left: 7px solid $fourthColor;
+      .username {
+        color: $firstColor;
+      }
+      .user-image {
+        border-radius: 50%;
+        background-color: $grayColor;
+        position: relative;
+        img {
+          border-radius: 50%;
+        }
+      }
+      .bio {
+        opacity: 0.8;
+      }
+      .footer {
+        color: $firstColor;
+        border-top: 1px solid #2222;
+        font-weight: 500;
+        a {
+          color: $fourthColor;
+          font-size: 1.2rem;
+          margin-left: 1em;
+          &:hover {
+            color: $firstColor;
+          }
+        }
+      }
+    }
+  }
+  .career-history {
+    background-color: $secondColor;
+    box-shadow: $normalShadow;
+    border-radius: $lightRadius;
+    border-left: 7px solid $fourthColor;
+    .career-history-header {
+      background-color: $grayColor;
+      border-bottom: 1px solid #2222;
+      color: $firstColor;
+    }
+    .career-history-content {
+      .career-history-content-item{
+        border-bottom: 1px solid #2222;
+      }
+      .career-history-content-item:last-of-type{
+        border: none;
+      }
+    }
+  }
+  .reviews {
+    background-color: $secondColor;
+    box-shadow: $normalShadow;
+    border-radius: $lightRadius;
+    border-left: 7px solid $fourthColor;
+    .reviews-header {
+      background-color: $grayColor;
+      border-bottom: 1px solid #2222;
+      color: $firstColor;
+    }
+    .reviews-content {
+      .reviews-content-item {
+        border-bottom: 1px solid #2222;
+        p{
+            opacity: .8;
+        }
+      }
+      .reviews-content-item:last-of-type {
+        border: none;
+      }
+    }
+  }
+  .calendar{
+    padding-left: 1.5vw;
+  }
+}
+
+.responsive-sidebar {
+  .no-interviews {
+    a {
+      color: white;
+      background-color: $fourthColor;
+      padding: 0.3em 0.8em;
+      display: inline-block;
+      margin: 1em 0;
+      border-radius: $lightRadius;
+    }
+  }
+}
+.upcoming-interviews-wrapper {
+  h5 {
+    text-align: center;
+    color: $firstColor;
+  }
+  text-align: left;
+  background-color: white;
+  box-shadow: $normalShadow;
+  border-radius: $lightRadius;
+  p {
+    border-top: 1px solid #2222;
+    a {
+      color: $fourthColor;
+      font-weight: 500;
+    }
+  }
+}
+
+
+.schedule-btn {
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  background-image: url("./../../../assets/3.png");
+  background-size: cover;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border: none;
+}

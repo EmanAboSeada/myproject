@@ -1,0 +1,26 @@
+<section class="chat-list h-100">
+    <div class="chat-list-header py-2 px-3 ">
+        <fa-icon [icon]="searchIcon"></fa-icon>
+        <input type="text" class="w-100" placeholder="Search Users" [(ngModel)]="filterMessagees">
+    </div>
+
+    <div class="chat-list-items mt-1">
+        <a [routerLink]="['/chat/', chat.id]" routerLinkActive="active" class="chat-list-item d-flex py-2 px-3 "
+            *ngFor="let chat of chatList | filter:filterMessagees:'userName'" (click)="clickChatListItem()">
+            <figure class="col mr-2">
+                <img [src]="chat.userImg" alt="" *ngIf="chat.userImg">
+                <img src="https://i.postimg.cc/kGrrctNV/default-user.jpg" alt="" *ngIf="!chat.userImg">
+            </figure>
+            <div class="col mt-2">
+                <div class="w-100 d-flex justify-content-between">
+                    <p>{{chat.userName| shorten:10}}</p>
+                    <small>{{chat.lastMessage.date | date:chat.lastMessage.timeFormat}}</small>
+                </div>
+                <small>
+                    {{chat.lastMessage.sender}}: {{chat.lastMessage.content | shorten:20}}
+                </small>
+            </div>
+        </a>
+
+    </div>
+</section>

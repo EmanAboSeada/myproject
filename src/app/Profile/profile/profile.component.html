@@ -1,0 +1,150 @@
+<section class=" profile row  mx-auto ">
+    <section class=" profile-wrapper col-12 col-lg-8">
+        <section class="p-4 intro">
+            <div class="row align-items-center">
+                <div class=" user-image">
+                    <button type="button" (click)="showUserImageDialog()" class="edit-btn">
+                        <fa-icon [icon]="icons.editIcon"></fa-icon>
+                    </button>
+                    <p-dialog styleClass="editImageModal" modal="true" dismissableMask="true" header="Edit Image"
+                        [(visible)]="displayUserImageDialog" [transitionOptions]="'.2s'">
+                        <form action="" [formGroup]="editUserImageForm">
+                            <image-cropper [imageChangedEvent]="imageChangedEvent"
+                                imageBase64="https://i.postimg.cc/kGrrctNV/default-user.jpg" format="png"
+                                (imageCropped)="imageCropped($event)" roundCropper="true"></image-cropper>
+                            <div class="row justify-content-around mt-3">
+                                <div class="col-5  file-input-container">
+                                    <input formControlName="userImageSrc" type="file" accept="image/*"
+                                        (change)="uploadUserImage($event)">
+                                    <p>Choose</p>
+                                </div>
+                                <input type="submit" class="col-5">
+                            </div>
+                        </form>
+                    </p-dialog>
+                    <figure class="user-image-dest">
+                        <img [src]="user.image" alt="" *ngIf="user.image">
+                        <img src="https://i.postimg.cc/kGrrctNV/default-user.jpg" alt="" *ngIf="!user.image">
+                    </figure>
+                </div>
+                <div class="pl-3 col">
+                    <div class="row align-items-center ">
+                        <h5 class=" username">{{user.name}}</h5>
+                        <img class="verified-img" src="../../assets/verified2.png" *ngIf="user.verified">
+                        <img class="verified-img" src="../../assets/verified1.png" *ngIf="!user.verified">
+                        <button type="button" (click)="showIntroFormDialog()" class="edit-btn">
+                            <fa-icon [icon]="icons.editIcon"></fa-icon>
+                        </button>
+                        <p-dialog styleClass="editIntroModal" modal="true" dismissableMask="true" header="Edit Intro"
+                            [(visible)]="displayIntroForm" [transitionOptions]="'.2s'">
+                            <form action="" [formGroup]="introForm" class="introForm" (submit)="submitIntroForm()">
+                                <div class="row my-2">
+                                    <div class="form-group col-6 pr-1 ">
+                                        <label for="fname" class="">First Name</label>
+                                        <input formControlName="fname" id="fname" type="text" class="form-control">
+                                        <small class=" text-danger" *ngIf="introForm.get('fname').hasError('required') && 
+                                introForm.get('fname').touched">*Required</small>
+                                    </div>
+                                    <div class="form-group col-6 pl-1">
+                                        <label for="lname" class="">Last Name</label>
+                                        <input formControlName="lname" id="lname" type="text" class="form-control">
+                                        <small class=" text-danger" *ngIf="introForm.get('lname').hasError('required') && 
+                                introForm.get('lname').touched">*Required</small>
+                                    </div>
+                                </div>
+                                <div class="form-group my-2">
+                                    <label for="headline" class="">Headline</label>
+                                    <input formControlName="headline" id="headline" type="text" class="form-control">
+                                </div>
+                                <div class="form-group my-2">
+                                    <label for="sammary">Sammary</label>
+                                    <textarea formControlName="sammary" class="form-control" id="sammary"
+                                        rows="5"></textarea>
+                                </div>
+                                <div class="form-group my-2">
+                                    <label for="rate">Interview Rate</label>
+                                    <input type="number" formControlName="interviewRate" class="form-control" id="rate">
+                                </div>
+                                <div class="my-1 mt-3">
+                                    <p class="social-links">Social Links</p>
+                                    <div class="row align-items-center my-1">
+                                        <label for="facebookLink" class="col-md-2 col-3">Facebook</label>
+                                        <input type="text" id="facebookLink" class="form-control col-md-10 col-9">
+                                    </div>
+                                    <div class="row align-items-center my-1">
+                                        <label for="LinkedinLink" class="col-md-2 col-3">Linkedin</label>
+                                        <input type="text" id="LinkedinLink" class="form-control col-md-10 col-9">
+                                    </div>
+                                    <div class="row align-items-center my-1">
+                                        <label for="githubLink" class="col-md-2 col-3">Git Hub</label>
+                                        <input type="text" id="githubLink" class="form-control col-md-10 col-9">
+                                    </div>
+                                </div>
+                                <div class="row introForm-submit">
+                                    <input type="submit" class="ml-auto mt-1">
+                                </div>
+                            </form>
+                        </p-dialog>
+                    </div>
+                    <p-rating class="row" [ngModel]="user.rate" disabled="true" [cancel]="false" readonly="true">
+                    </p-rating>
+                    <p class="row">{{user.companyNmae}}</p>
+                </div>
+
+            </div>
+            <h6 class="row mt-5">{{user.jobTitle}}</h6>
+            <p class="row my-2 bio">{{user.bio}}</p>
+            <div class="row mt-4 pt-4 footer justify-content-between">
+                <div class="col d-flex">
+                    <p class="mr-md-5 mr-3">${{user.amount}}</p>
+                    <p>{{user.interviewsNumber}} Interviews</p>
+                </div>
+                <div class="ml-lg-auto d-flex">
+                    <a href="#">
+                        <fa-icon [icon]="icons.facebook"></fa-icon>
+                    </a>
+                    <a href="#">
+                        <fa-icon [icon]="icons.linkedin"></fa-icon>
+                    </a>
+                    <a href="#">
+                        <fa-icon [icon]="icons.github"></fa-icon>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <app-career-history></app-career-history>
+        <app-reviews></app-reviews>
+    </section>
+    <section class="upcomming-interviews d-none d-lg-block col-4">
+       
+        <div class="upcoming-interviews-wrapper  p-2">
+            <h5 class=" my-1 p-3">
+                lorem est theses
+            </h5>
+            <div class="p-2">
+                <p class="py-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis animi excepturi neque architecto,
+                    dolores repellendus culpa autem sapiente eius</p>
+                <p class="py-3">Obis repellendus suscipit accusamus odio cum voluptate facilis ratione porro minima similique
+                    recusandae sequi veritatis quia aliquam fuga quam quas.</p>
+            </div>
+        </div>
+    </section>
+</section>
+<section class=" responsive-sidebar d-block d-lg-none col-4">
+    <p-sidebar [(visible)]="displaySideBar" position="right" dismissableMask="true"
+        [style]="{width:'25em', overflow:'auto'}">
+       
+        <div class="upcoming-interviews-wrapper mt-5  p-2">
+            <h5 class=" my-2  p-3">
+                loream est theses
+            </h5>
+            <div class="p-2">
+                <p class="py-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis animi excepturi neque architecto,
+                    dolores repellendus culpa autem sapiente eius</p>
+                <p class="py-3">Obis repellendus suscipit accusamus odio cum voluptate facilis ratione porro minima similique
+                    recusandae sequi veritatis quia aliquam fuga quam quas.</p>
+            </div>
+        </div>
+    </p-sidebar>
+    <button class="schedule-btn" type="text" pButton label="" (click)="displaySideBar = true" pButton></button>
+</section>

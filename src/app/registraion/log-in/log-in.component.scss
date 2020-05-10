@@ -1,0 +1,64 @@
+@import "../../../styles.scss";
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (min-width: 769px) {
+}
+.alert-danger{
+ max-width: 27em;
+    min-width: 10em;
+    margin: 0 auto;
+    text-align: center;
+}
+form {
+  box-shadow: $normalShadow;
+  background-color: $secondColor;
+  max-width: 27em;
+  min-width: 10em;
+  border-radius: 2em 0;
+  .ui-inputtext {
+    padding: 0 1.5em 0.2em 0.3em;
+    border: none;
+    border-bottom: 1px solid $firstColor;
+    border-radius: 0;
+    color: $firstColor;
+    font-size: 1.2rem;
+    lable {
+      top: -10px;
+      left: 0;
+    }
+    &.ng-invalid.ng-touched {
+      border-bottom-color: #dc3545;
+    }
+  }
+  small {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+  .ui-float-label > label {
+    color: $fourthColor;
+    margin-top: -0.2em;
+  }
+  .ui-inputtext:enabled:focus:not(.ui-state-error) {
+    box-shadow: none;
+    border-bottom: 2px solid $fourthColor;
+  }
+  fa-icon {
+    color: $fourthColor;
+    position: absolute;
+    right: 0.5em;
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+  .login-btn {
+    border: none;
+    color: $secondColor;
+    background-color: $firstColor;
+    padding: 0.3em;
+    border-radius: $lightRadius;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+}

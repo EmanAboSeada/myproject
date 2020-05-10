@@ -1,0 +1,54 @@
+<header class="w-100">
+    <section class="header-wrapper row justify-content-between py-4">
+        <figure class="hero-img col-md-5 order-md-2">
+            <img src="https://i.postimg.cc/1XDkY5Mv/hero.png" alt="">
+        </figure>
+        <section class="hero-content d-flex flex-column col-md-5 mt-3 order-md-1 align-items-center justify-content-center">
+            <h1>Lorem ipsum </h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam nisi excepturi est neque, voluptates
+                sint ab quae voluptatum, minus eligendi iste laborum rem nihil aut adipisci? Corporis labore
+                repellendus natus?</p>
+            <button>START NOW</button>
+        </section>
+    </section>
+</header>
+
+<section class="content d-flex flex-column">
+    <section class="profiles">
+            <app-interviewer-details *ngFor="let user of users" [user]="user"></app-interviewer-details>
+    </section>
+        <a routerLink="/feed" class="see-all-btn">See All</a>
+        <section class="steps container d-flex justify-content-between">
+            <section class="steps-item">
+                <img src="https://i.postimg.cc/q7RdMrM7/book2.png" alt="">
+                <p >Step 1</p>
+                <p>Lorem ipsum dolor sit amet</p>
+            </section>
+            <section class="arrow rotate-90">
+                <img src="https://i.postimg.cc/bvBfZ5s9/arrow3.png" alt="">
+            </section>
+            <section class="steps-item">
+                <img src="https://i.postimg.cc/q7RdMrM7/book2.png" alt="">
+                <p >Step 2</p>
+                <p>Dolor sit amet</p>
+            </section>
+            <section class="arrow rotate-90">
+                <img src="https://i.postimg.cc/bvBfZ5s9/arrow3.png" alt="">
+            </section>
+            <section class="steps-item">
+                <img src="https://i.postimg.cc/q7RdMrM7/book2.png" alt="">
+                <p >Step 3</p>
+                <p>Corporis labore repellendus</p>
+            </section>
+            <section class="arrow rotate-90">
+                <img src="https://i.postimg.cc/bvBfZ5s9/arrow3.png" alt="">
+            </section>
+            <section class="steps-item">
+                <img src="https://i.postimg.cc/q7RdMrM7/book2.png" alt="">
+                <p >Step 4</p>
+                <p>Ullam nisi excepturi es</p>
+            </section>
+        </section>
+</section>
+
+

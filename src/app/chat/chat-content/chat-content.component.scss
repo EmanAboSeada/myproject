@@ -1,0 +1,167 @@
+@import "./../../../styles.scss";
+
+.chat-content {
+  position: relative;
+  .chat-content-header {
+      box-shadow: 0px 3px 3px 0px #2222;
+      padding: .28rem 1.5rem;
+      .back-btn{
+        padding: 0;
+        font-size: 2rem;
+        color: $firstColor;
+      }
+      a {
+          color: black;
+          &:hover{
+              color: $fourthColor;
+              text-decoration: none;
+          }
+        }
+    }
+    .chat-content-wrapper {
+    overflow-y: auto;
+    height: 80%;
+    .another-message, .user-message{
+        padding: .3rem 1rem;
+        margin-top:  .3rem;
+        border-radius: .2rem;
+        max-width: 80%;
+        small{
+          display: block;
+          text-align: right;
+        }
+    }
+    .another-message {
+      background-color: $firstColor;
+      color: $secondColor;
+    }
+    
+    .another-message-container + .user-message-container, .user-message-container:first-child{
+      margin-top: 1rem;
+      position: relative;
+      &::after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 20px;
+        height: 9px;
+        background-color: $grayColor;
+        top: 5px;
+        right: -8px;
+        border-radius: 0 0 100% 0;
+      }
+    } 
+    .user-message-container + .another-message-container, .another-message-container:first-child{
+      margin-top: 1rem;
+      position: relative;
+      &::after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 20px;
+        height: 9px;
+        background-color: $firstColor;
+        top: 5px;
+        left: -8px;
+        border-radius: 0 0 0 100% ;
+      }
+    } 
+    .user-message {
+      background-color: $grayColor;
+      color: black;
+      margin-left: auto;
+    }
+    .resend-btn{
+      color: rgb(240, 96, 96);
+      align-self: center;
+      background-color: transparent;
+      border: none;
+      margin-left: auto;
+    }
+  }
+  .emoji-picker{
+    position: absolute;
+    bottom: 60px;
+    left: 10px;
+    display: none;
+    z-index: 10;
+    &:focus{
+      outline: none;
+    }
+  }
+  .chat-content-footer {
+    position: absolute;
+    bottom: 0px;
+    .preview{
+      background-color: $secondColor;
+      border-top: 1px solid #2222;
+      display: none;
+      transition: 2s;
+      figure{
+        height: 5rem;
+        width: 5rem;
+        img{
+          height: 100%;
+        }
+      }
+      
+      .close-preview-btn{
+        background-color: transparent;
+        padding: 0;
+        border: none;
+      }
+    }
+    form {
+      border-top: 1px solid #2222;
+      input {
+        padding: 0.3rem 0.8rem;
+        border-radius: 2em;
+        border: 2px solid #2222;
+        opacity: 0.8;
+        resize: none;
+        height: 40px;
+        overflow: hidden;
+        &:focus {
+          outline: none;
+          border-color: $fourthColor;
+        }
+      }
+      label,
+      .smileIcon-btn{
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: auto;
+        fa-icon{
+          opacity: 0.6;
+          &:hover {
+            cursor: pointer;
+            transition: 0.3s;
+            opacity: 1;
+          }
+        }
+      }
+      .smileIcon-btn, .send-btn {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+      }
+      .send-btn{
+        color: $firstColor;
+        font-size: 1.5rem;
+        &:disabled{
+          opacity: .5;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and(max-width: 768){
+  .chat-content{
+    .chat-content-wrapper{
+      height: 90%;
+    }
+  }
+}

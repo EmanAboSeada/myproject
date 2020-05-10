@@ -1,0 +1,15 @@
+@import "./../../styles.scss";
+
+.chat {
+  width: $containerWidth;
+  height: 92vh;
+  box-shadow: $normalShadow;
+  background-color: $secondColor;
+  
+}
+
+@media only screen and (max-width: 768px) {
+  .chat {
+    width: 100%;
+  }
+}

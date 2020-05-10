@@ -1,0 +1,54 @@
+<section class="chat-content h-100">
+    <div class="chat-content-header d-flex">
+        <fa-icon [icon]="icons.backIcon" class="back-btn d-sm-none d-block mr-3" (click)="backToChat()"></fa-icon>
+        <div>
+            <a [routerLink]="['/user-profile', user.id]" class=" h5">{{user.userName}}</a>
+            <small class="d-block text-muted">{{lastSeen}}</small>
+        </div>
+    </div>
+
+    <div class="chat-content-wrapper p-3 w-100" #chatContentWrapper>
+        <div class="d-flex flex-column align-items-baseline" *ngFor="let message of user.messages"
+            [class]="(message.sender == 'user')?'another-message-container': 'user-message-container'">
+            <div [class]="(message.sender == 'user')?'another-message': 'user-message'">
+                <p>{{message.content}}</p><small class="text-muted">{{message.date|date:'shortTime'}}</small>
+            </div>
+            <button *ngIf="!message.savedStatus && message.sender=='me'" class="resend-btn">Resend <fa-icon
+                    [icon]="icons.errorIcon"></fa-icon></button>
+        </div>
+    </div>
+    <emoji-mart [showPreview]="false" class="emoji-picker" tabindex="0" (blur)="hideEmoji($event)"
+        (emojiSelect)="addEmoji($event)">
+    </emoji-mart>
+    <div class="chat-content-footer w-100">
+        <div class="preview justify-content-between  px-4">
+            <figure class="">
+                <img src="https://i.postimg.cc/Dyrhx5M7/file-upload-solid.png" alt="">
+            </figure>
+            <p class="align-self-center">{{selectedFileName}}</p>
+            <button class="close-preview-btn" (click)="closePreview()">
+                <fa-icon [icon]="icons.closeIcon"></fa-icon>
+            </button>
+        </div>
+        <form action="" class="w-100 py-2 px-3" [formGroup]="messageForm" (submit)="sendMessage()">
+            <div class="row">
+                <div class="col-1 file-upload-container">
+                    <input type="file" id="file-upload" class="d-none" (change)="selectFile($event)"
+                        formControlName="fileUpload">
+                    <label for="file-upload">
+                        <fa-icon [icon]="icons.fileUploadIcon"></fa-icon>
+                    </label>
+                </div>
+                <button class="smileIcon-btn col-1 d-none d-lg-block">
+                    <fa-icon [icon]="icons.smileIcon" class="smileIcon" (click)="showEmojiPicker($event)"></fa-icon>
+                </button>
+                <input type="text" autocomplete="off" class="messagetxt col-10 col-lg-9" placeholder="Write a message"
+                    name="messagetxt" formControlName="messagetxt" [(ngModel)]="messagetxt" autofocus>
+                <button type="submit" class="send-btn col-1"
+                    [disabled]="!messageForm.value.messagetxt && !messageForm.value.fileUpload">
+                    <fa-icon [icon]="icons.sendIcon" class="sendIcon"></fa-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
